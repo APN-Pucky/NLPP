@@ -1,0 +1,34 @@
+$ make test
+=======Pi=========================================
+ n_tot =            1  pi =    4.00000000    
+ n_tot =           10  pi =    3.20000005    
+ n_tot =          100  pi =    3.24000001    
+ n_tot =         1000  pi =    3.14800000    
+ n_tot =        10000  pi =    3.16440010    
+ n_tot =       100000  pi =    3.14299989    
+ n_tot =      1000000  pi =    3.14175606    
+=======Monte-Carlo Sampling=======================
+ log_10(n)=           1 : Mittelwert        =    1.9430674753436108     
+ log_10(n)=           1 : Neumann-Rejection =    1.9479911327362061     
+ log_10(n)=           2 : Mittelwert        =    1.3031396925942176     
+ log_10(n)=           2 : Neumann-Rejection =    1.7531919479370117     
+ log_10(n)=           3 : Mittelwert        =    1.2365272555608937     
+ log_10(n)=           3 : Neumann-Rejection =    1.2661942243576050     
+ log_10(n)=           4 : Mittelwert        =    1.2250913419792022     
+ log_10(n)=           4 : Neumann-Rejection =    1.2077544927597046     
+ log_10(n)=           5 : Mittelwert        =    1.2260793640921011     
+ log_10(n)=           5 : Neumann-Rejection =    1.2225593328475952     
+ log_10(n)=           6 : Mittelwert        =    1.2263023806333961     
+ log_10(n)=           6 : Neumann-Rejection =    1.2253448963165283     
+ log_10(n)=           7 : Mittelwert        =    1.2263042818509018     
+ log_10(n)=           7 : Neumann-Rejection =    1.2257851362228394     
+ log_10(n)=           8 : Mittelwert        =    1.2262256251514589     
+ log_10(n)=           8 : Neumann-Rejection =    1.2261012792587280     
+ log_10(n)=           1 : Importance        =    1.2045918958435071     
+ log_10(n)=           2 : Importance        =    1.2442480373274372     
+ log_10(n)=           3 : Importance        =    1.2287116809141754     
+ log_10(n)=           4 : Importance        =    1.2259931071626968     
+ log_10(n)=           5 : Importance        =    1.2262237381463690     
+ log_10(n)=           6 : Importance        =    1.2263420928384721     
+ log_10(n)=           7 : Importance        =    1.2263092543018499     
+ log_10(n)=           8 : Importance        =    1.2263340736936237     

@@ -1,0 +1,42 @@
+Alexander Neuwirth, Übung1, NLPP, Thu Oct 18 17:37:49 CEST 2018, Jim Bachmann
+
+1)
+    a) A_Q=1 und A_K=PI*1**2/4 => PI=N_HIT/N_TOT*4. 
+    b) Mit mehr Durchläufen werden die Ergebnisse genauer. Um PI auf 4 Nachkommastellen zu bestimmen muss 1/sqrt(n)=0.0001, also n=100000000. Pro zusätzliche Dezimalstelle muss die Schrittzahl mit 100 multipliziert werden.
+    c) Das Integral berechnet PI, da über die Fläche des Kreisviertels durch Integration bestimmt wird und dieses mit 4 multipliziert wird.
+
+2)
+    a)
+        analytisch:     unbestimmt: 3/2*x**(2/3) + x**2/20 
+                        Grenzen:    1.55 - 0.323665204 = 1.226334796
+        Neumann-Rejection:          Maximum bei x = 0.1 ; f(x)=2.16443469
+    b) In plot.pdf ist der Graph und Fit dargestellt. Der Parameter a entspricht dabei c. 
+        <f>=Integral(f)/(b-a)= 1.3626
+        <f**2>=1.9203
+        c = 0.2522
+       Keiner der gefitteten Werte liegt nahe an dem analytischen Wert, was zu erwarten war, da die messpunkte auch ziemlich verstreut um die gefittete Kurve liegen.
+    c) u=w*dx => u(x)=3/2*a*x**(2/3)+c => LGS 3/2*a(1-0.1**(2/3))=1 => a=0.8497369 c=1-3/2a => x(u)=((u-1+3/2*a)/(3/2)*a)**(3/2). In dem Graphen in plot.pdf sieht man, dass das Importance Sampling einen deutlich kleineren absoluten Fehler hat.
+
+
+PS:
+Meine Ausgaben sind in output.txt enthalten.
+
+Aus Übung 7 , 23.6.18:
+Zum Modul 'zfunktion':
+
+Es wird ein type(funktion) definiert, welcher function-pointer hat, welche auf functions verweisen, die ausgefuehrt werden sollen durch Operatoren +,-,*,/,**. (function meint im folgenden eine Fortran function und funktion eine type(funktion) objekt)
+Es wird drei funktionen d,x,dx zur Verfuegung gestellt. Diese lassen sich durch Operatoren mit anderen funktionen oder Reals verknuepfen.
+Eine Funktion kann mittels %get(x) and der Stelle x ausgewertet werden.
+Eine Division durch dx fuehrt dazu, dass das Vorwaertsdifferenz-Verfahren auf den Zaehler angewendet wird.
+Eine Multiplikation mit dx fuehrt dazu, dass das Simpson-Verfahren auf die funktion vor dx andgewendet wird. %get(x) fuehrt nun zu einem Error wenn man einen real uebergibt, stattdessen wird eine real array uebergeben, welches zuerst die obere und dann die untere Grenze des Integrals definiert.
+Die Ausfuehrungen functionen der funktion dx sind in dx_operations.inc enthalten.
+Es lassen sich beliebige functions als funktion definieren, insofern diese dem interface func genuegen. Dann kann mittels create_funktion(f) eine funktion erzeugt werden.
+
+Fuer die jeweiligen function pointer wurden abstracte interface angelegt, die definieren wie eine solche function ausssieht.
+Die Parameter der Verfahren N,eps,h sind als Variablen des Moduls gegeben.
+Da ein funktion pointer array allocated wird sollte zum Schluss die Subroutine dealloc aufgerufen werden, welche die funktionen in dem pointer array recursiv deallocated.
+
+Um auch funktionen zu haben die nicht von x abhaengen gibt es functions die dem interface func genuegen muessen, jedoch die x Variable nicht benutzten. Dies fuehrt zur Compiler Warnung unused-dummy-argument.  
+
+
+
