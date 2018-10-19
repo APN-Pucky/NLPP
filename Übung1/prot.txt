@@ -1,11 +1,11 @@
 Alexander Neuwirth, Übung1, NLPP, Thu Oct 18 17:37:49 CEST 2018, Jim Bachmann
 
-1)
+1) src: module/pi.f90
     a) A_Q=1 und A_K=PI*1**2/4 => PI=N_HIT/N_TOT*4. 
     b) Mit mehr Durchläufen werden die Ergebnisse genauer. Um PI auf 4 Nachkommastellen zu bestimmen muss 1/sqrt(n)=0.0001, also n=100000000. Pro zusätzliche Dezimalstelle muss die Schrittzahl mit 100 multipliziert werden.
     c) Das Integral berechnet PI, da über die Fläche des Kreisviertels durch Integration bestimmt wird und dieses mit 4 multipliziert wird.
 
-2)
+2) src: module/sampling.f90
     a)
         analytisch:     unbestimmt: 3/2*x**(2/3) + x**2/20 
                         Grenzen:    1.55 - 0.323665204 = 1.226334796
@@ -14,7 +14,7 @@ Alexander Neuwirth, Übung1, NLPP, Thu Oct 18 17:37:49 CEST 2018, Jim Bachmann
         <f>=Integral(f)/(b-a)= 1.3626
         <f**2>=1.9203
         c = 0.2522
-       Keiner der gefitteten Werte liegt nahe an dem analytischen Wert, was zu erwarten war, da die messpunkte auch ziemlich verstreut um die gefittete Kurve liegen.
+       Keiner der gefitteten Werte liegt nahe an dem analytischen Wert, was zu erwarten war, da die Messpunkte auch ziemlich verstreut um die gefittete Kurve liegen.
     c) u=w*dx => u(x)=3/2*a*x**(2/3)+c => LGS 3/2*a(1-0.1**(2/3))=1 => a=0.8497369 c=1-3/2a => x(u)=((u-1+3/2*a)/(3/2)*a)**(3/2). In dem Graphen in plot.pdf sieht man, dass das Importance Sampling einen deutlich kleineren absoluten Fehler hat.
 
 

@@ -1,6 +1,7 @@
 # program name
 PROGRAM = main.out
-ZIPFILE = $(shell basename $(shell pwd))
+PWD = $(shell pwd)
+ZIPFILE = $(shell basename $(PWD))
 DATE = $(shell date)
 
 # compiler
@@ -32,7 +33,9 @@ test: one
 
 
 zip: clean pdfs
-	zip $(ZIPFILE) -R *
+	cd ..; zip $(PWD)/$(ZIPFILE) -r $(ZIPFILE)
+	
+
 
 pdfs: $(TXTS)
 
