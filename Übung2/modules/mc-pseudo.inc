@@ -1,17 +1,17 @@
 !================================================
-PROGRAM mc
+!PROGRAM mc
 !================================================
 
 ! nstep MC steps 
-DO istep=1,nstep 
+!DO istep=1,nstep 
 
 ! randomly displace atoms
-   CALL mcmove(x,y,z,n,nacc,e)
+!   CALL mcmove(x,y,z,n,nacc,e)
 
-ENDDO
+!ENDDO
 
 !================================================
-END PROGRAM mc
+!END PROGRAM mc
 !================================================
 
 !================================================
