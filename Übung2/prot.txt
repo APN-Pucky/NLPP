@@ -1,8 +1,8 @@
-Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
+Alexander Neuwirth, Übung2, NLPP, Thu Oct 25 15:24:53 CEST 2018, Jim Bachmann
 
 1)
-    a)
-	b)  Die Akzeptanzrate beträgt ~50% bei delta=0.005nm. Sie sollte ~50% sein, da wenn sie kleiner ist viele Schritte verworfen werden (= unnötige Arbeit) und wenn sie größer ist beschränkt sich die Auswertung auf die Täler und es kommt lediglch zu geringen Energieänderungen.
-	c) delta=0.012nm. 300K => fest. 2000K => Flüssig.
+    a) src: modules/metropolis.f90
+	b) Die Akzeptanzrate beträgt ~50% bei delta=0.005nm (data/au13-300.xyz.zip). Sie sollte ~50% sein, da wenn sie kleiner ist viele Schritte verworfen werden (= unnötige Arbeit) und wenn sie größer ist beschränkt sich die Auswertung auf die Täler und es kommt lediglch zu geringen Energieänderungen.
+	c) delta=0.012nm (data/au13-2000.xyz.zip). 300K => fest. 2000K => flüssig. plot: plot.pdf
 
 PS:

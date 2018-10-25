@@ -10,7 +10,7 @@ module metropolis
 
     !parameter
     integer ::nstep=300000
-    real*8 :: t=2000,delta=0.12
+    real*8 :: t=2000,delta=0.120
     contains 
     subroutine metro()
         call io_selectLoop((/&
