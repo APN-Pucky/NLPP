@@ -1,27 +1,35 @@
 module metropolis
-    use io
+    use mIO
     use mElement
-    use constants
+    use mConstants
+    use mMath
     implicit none
-    integer n
+    integer :: n
+    type(Element),dimension(:),allocatable :: start_l
     type(Element),dimension(:),allocatable :: l
+
+    !parameter
+    integer ::nstep=300000
+    real*8 :: t=2000,delta=0.12
     contains 
     subroutine metro()
         call io_selectLoop((/&
-            Select("Load Data",load_data),&
+            Select("Load/Init Data",load_data),&
             Select("Print Data", print_data),&
-            Select("Calc Data",calc_data)&
+            Select("Calc & Save Data",calc_data)&
         /))
 
     end subroutine
 
-    subroutine mcmove(x,y,z,n,nacc,e)
+    subroutine mcmove(x,y,z,n,moved,e)
         real*8, dimension(n) :: x,y,z,xnew,ynew,znew
-        integer :: n,nacc,istep,i 
-        real*8 :: e,eold,rand,t=300,delta=0.5,boltz
+        integer :: n,i 
+        logical :: moved
+        real*8 :: eold,rand,boltz
+        real*8, optional :: e
 
         ! calculate energy at old positions
-        CALL energy(x,y,z,n,e)       
+        if(.NOT. present(e))CALL energy(x,y,z,n,e)       
         eold=e
         
         ! random displacement of atoms: 
@@ -46,7 +54,6 @@ module metropolis
         ! accept or reject new positions
         CALL random_number(rand) 
         IF (rand.LT.boltz) THEN   
-           Write(*,*) "hit" 
            DO i=1,n
         
               x(i)=xnew(i)
@@ -56,11 +63,12 @@ module metropolis
            ENDDO
                  
         ! count accepted trial moves
-           nacc=nacc+1
-              
+           !nacc=nacc+1
+           moved = .true.
         ELSE
                  
            e=eold
+           moved=.false.
                  
         ENDIF
               
@@ -69,31 +77,56 @@ module metropolis
     end subroutine
 
     subroutine calc_data()
-        integer :: nacc=0,nstep=1,istep=1
-        real*8 :: e=0
+        integer :: nacc,istep=1,f,i
+        logical :: moved
+        real*8 :: e=0,c
+        real*8,allocatable :: energies(:) 
+        nacc=0
+        l = start_l
+        f= io_openFile("data/au13-out.xyz",'replace') 
+        write(f,*) n
         ! nstep MC steps 
         DO istep=1,nstep 
 
             ! randomly displace atoms
-            CALL mcmove(l%x,l%y,l%z,n,nacc,e) 
+            CALL mcmove(l%x,l%y,l%z,n,moved,e) 
+            if(moved) then
+                nacc = nacc+1
+                write(f,*) e,nacc
+                write(f,*) (l(i),nl,i=1,n),n
+            endif
         ENDDO
+        rewind(f)
+        allocate(energies(nacc))
+        Do istep=1, nacc
+            call io_skip(f,1)
+            read(f,*) energies(istep), i
+            call io_skip(f,n)
+        end do
+        c=variance(energies)/kb/t**2
+        deallocate(energies)
+        call io_close(f)
+        write(*,'(A,I0,A,F5.2,A)') "Accepted steps: " , nacc," (", real(nacc)/real(nstep)*100,"%)"
+        write(*,*) "c=", c
     end subroutine
 
 
     subroutine load_data()
-        integer :: b,ierror,i
+        integer :: b,i,f
         !call load_data("",ttt)
+        if(allocated(start_l))deallocate(start_l)
         if(allocated(l))deallocate(l)
-        open(unit=9, file=io_getFileName("data/au13-ini.xyz"), status='old', IOSTAT=ierror)
-        read(9,*) n,b
-        allocate(l(n))
-        read(9,*) (l(i),i=1,n)
+        f = io_openFile("data/au13-ini.xyz",'old')
+        read(f,*) n,b
+        allocate(start_l(n))
+        read(f,*) (start_l(i),i=1,n)
+        call io_close(f)
     end subroutine
 
     subroutine print_data()
         integer :: i
         !call load_data("",ttt)
-        write(*,*) (l(i),char(10),i=1,n)
+        write(*,*) (l(i),nl,i=1,n)
     end subroutine
 
 end module

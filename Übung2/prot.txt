@@ -1,7 +1,8 @@
 Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
 
 1)
-	a)
-	b)
+    a)
+	b)  Die Akzeptanzrate beträgt ~50% bei delta=0.005nm. Sie sollte ~50% sein, da wenn sie kleiner ist viele Schritte verworfen werden (= unnötige Arbeit) und wenn sie größer ist beschränkt sich die Auswertung auf die Täler und es kommt lediglch zu geringen Energieänderungen.
+	c) delta=0.012nm. 300K => fest. 2000K => Flüssig.
 
 PS:
