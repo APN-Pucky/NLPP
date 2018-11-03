@@ -1,0 +1,39 @@
+./main.out
+Options: 
+  0) Quit
+  1) Set RNG Mode        
+  2) Set Fortran Mode    
+  3) Next RNG Number     
+  4) Save n Numbers   
+> 1
+> 4
+File (default=data/dat.dat):
+Opening: data/dat.dat                                                                                        
+ Integer (default=       10000 ):
+1000000      
+ Using:      1000000
+ <x>=  0.511398315    
+ <x²>=  0.341775537    
+ C=  0.263104230    
+ Periode:        2471
+ Periode:        4942
+ Periode:        7413
+ Periode:        9884
+ Periode:       12355
+ Periode:       14826
+ Periode:       17297
+ Periode:       19768
+ [...]
+> 2
+> 4
+File (default=data/dat.dat):data/dat-fortran.dat
+Opening: data/dat-fortran.dat                                                                                
+ Integer (default=       10000 ):
+d
+ Using:        10000
+ <x>=  0.501612961    
+ <x²>=  0.335956693    
+ C=  0.252501547    
+ Periode:       10000
+> 0
+Quit

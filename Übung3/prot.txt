@@ -1,0 +1,12 @@
+Alexander Neuwirth, Übung3, NLPP, Sat Nov  3 10:50:55 CET 2018, Jim Bachmann
+
+a) src: modules/random.f90
+b) 
+	1) In plot-small.pdf sind 4 Zyklen deutlich zu erkennen. In plot-big.pdf sind die selben Daten, jedoch sind die Zyklen nicht so eindeutig erkennbar.
+	2) Analytisch: 	<x>=Int_0_1 x dx=0.5 ; <x²>=Int_0_1 x² dx=1/3 . Der Algorithmus gibt ca. entsprechende Werte aus. (output.txt)
+	3) C=1/N SUM_N x_i*x_(i+1) ; x_i ist unabhängig von x_(i+1) => <x_j>=0.5 => C=1/4 . Der Algorithmus hat eine ca. entsprechende Korrelation.
+	4) Die Periode des Generators beträgt 2471 also x_i = x_(i+j) mit j=n*2471
+c)
+	1) In plot-fortran-small.pdf ( bzw. big) sind keine Zyklen deutlich zu erkennen.
+	2)3) Die <x>, <x²> und C sind näher an den analytischen Werten als der RNG aus b) (output.txt)
+	4) Es treten keine Periodizitäten im Bereich von 1000000 auf.
