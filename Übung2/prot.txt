@@ -2,7 +2,5 @@ Alexander Neuwirth, Übung2, NLPP, Thu Oct 25 15:24:53 CEST 2018, Jim Bachmann
 
 1)
     a) src: modules/metropolis.f90
-	b) Die Akzeptanzrate beträgt ~50% bei delta=0.005nm (data/au13-300.xyz.zip). Sie sollte ~50% sein, da wenn sie kleiner ist viele Schritte verworfen werden (= unnötige Arbeit) und wenn sie größer ist beschränkt sich die Auswertung auf die Täler und es kommt lediglch zu geringen Energieänderungen.
-	c) delta=0.012nm (data/au13-2000.xyz.zip). 300K => fest. 2000K => flüssig. plot: plot.pdf
-
-PS:
+	b) Die Akzeptanzrate beträgt ~50% bei delta=0.005nm (data/au13-300.xyz.zip). Sie sollte ~50% sein, da wenn sie kleiner ist viele Schritte verworfen werden (= unnötige Arbeit) und wenn sie größer ist beschränkt sich die Auswertung auf die Täler und es kommt lediglich zu geringen Energieänderungen.
+	c) delta=0.012nm (data/au13-2000.xyz.zip). 300K => fest. 2000K => flüssig. In plot.pdf (data/c.dat) sieht man, dass trotz steigender Energie bei ~440-460 K kaum ein Anstieg der Temperatur folgt. Die Energie wird zum Ändern des Aggregatzustands verwendet. Insofern ist der Schmelzpunkt diese Temperatur.

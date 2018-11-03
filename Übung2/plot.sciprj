@@ -1,0 +1,78 @@
+SciDAVis 1.22.0 project file
+<scripting-lang>	muParser
+<windows>	5
+<table>
+1485
+<table creation_time="2018-25-10 14:20:12:885" caption_spec="%n%C{ - }%c" name="Table1" columns="2" rows="30"><comment><![CDATA[]]></comment><column creation_time="2018-25-10 14:20:12:885" caption_spec="%n%C{ - }%c" name="1" type="TypeDouble" mode="Numeric" plot_designation="X"><comment><![CDATA[]]></comment><input_filter><simple_filter creation_time="2018-25-10 14:20:12:885" caption_spec="%n%C{ - }%c" name="InputFilter" filter_name="String2DoubleFilter"><comment><![CDATA[]]></comment></simple_filter></input_filter><output_filter><simple_filter creation_time="2018-25-10 14:20:12:885" caption_spec="%n%C{ - }%c" name="OutputFilter" format="g" digits="6" filter_name="Double2StringFilter"><comment><![CDATA[]]></comment></simple_filter></output_filter></column><column creation_time="2018-25-10 14:20:12:887" caption_spec="%n%C{ - }%c" name="2" type="TypeDouble" mode="Numeric" plot_designation="Y"><comment><![CDATA[]]></comment><input_filter><simple_filter creation_time="2018-25-10 14:20:12:887" caption_spec="%n%C{ - }%c" name="InputFilter" filter_name="String2DoubleFilter"><comment><![CDATA[]]></comment></simple_filter></input_filter><output_filter><simple_filter creation_time="2018-25-10 14:20:12:887" caption_spec="%n%C{ - }%c" name="OutputFilter" format="g" digits="6" filter_name="Double2StringFilter"><comment><![CDATA[]]></comment></simple_filter></output_filter></column><column_width column="0">120</column_width><column_width column="1">120</column_width></table>
+geometry	0	0	564	412	
+
+</table>
+<table>
+1333
+<table creation_time="2018-25-10 14:20:54:307" caption_spec="%n%C{ - }%c" name="Table2" columns="1" rows="6"><comment><![CDATA[/home/apn/Developing/git/NLPP/Übung2/data/c.dat]]></comment><column creation_time="2018-25-10 14:20:54:307" caption_spec="%n%C{ - }%c" name="200 2.6502548189568697E-022" type="TypeDouble" mode="Numeric" plot_designation="X"><comment><![CDATA[]]></comment><input_filter><simple_filter creation_time="2018-25-10 14:20:54:307" caption_spec="%n%C{ - }%c" name="InputFilter" filter_name="String2DoubleFilter"><comment><![CDATA[]]></comment></simple_filter></input_filter><output_filter><simple_filter creation_time="2018-25-10 14:20:54:307" caption_spec="%n%C{ - }%c" name="OutputFilter" format="g" digits="6" filter_name="Double2StringFilter"><comment><![CDATA[]]></comment></simple_filter></output_filter><row type="TypeDouble" index="0" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="1" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="2" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="3" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="4" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="5" invalid="no">0.0000000000000000e+00</row></column><column_width column="0">120</column_width></table>
+geometry	0	0	688	412	
+
+</table>
+<table>
+1381
+<table creation_time="2018-25-10 14:21:09:805" caption_spec="%n%C{ - }%c" name="Table3" columns="1" rows="7"><comment><![CDATA[/home/apn/Developing/git/NLPP/Übung2/data/c.dat]]></comment><column creation_time="2018-25-10 14:21:09:804" caption_spec="%n%C{ - }%c" name="1" type="TypeDouble" mode="Numeric" plot_designation="X"><comment><![CDATA[]]></comment><input_filter><simple_filter creation_time="2018-25-10 14:21:09:804" caption_spec="%n%C{ - }%c" name="InputFilter" filter_name="String2DoubleFilter"><comment><![CDATA[]]></comment></simple_filter></input_filter><output_filter><simple_filter creation_time="2018-25-10 14:21:09:804" caption_spec="%n%C{ - }%c" name="OutputFilter" format="g" digits="6" filter_name="Double2StringFilter"><comment><![CDATA[]]></comment></simple_filter></output_filter><row type="TypeDouble" index="0" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="1" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="2" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="3" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="4" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="5" invalid="no">0.0000000000000000e+00</row><row type="TypeDouble" index="6" invalid="no">0.0000000000000000e+00</row></column><column_width column="0">120</column_width></table>
+geometry	307	114	564	412	
+
+</table>
+<table>
+2568
+<table creation_time="2018-25-10 14:22:36:213" caption_spec="%n%C{ - }%c" name="Table4" columns="2" rows="7"><comment><![CDATA[/home/apn/Developing/git/NLPP/Übung2/data/c.dat]]></comment><column creation_time="2018-25-10 14:22:36:212" caption_spec="%n%C{ - }%c" name="1" type="TypeDouble" mode="Numeric" plot_designation="X"><comment><![CDATA[]]></comment><input_filter><simple_filter creation_time="2018-25-10 14:22:36:212" caption_spec="%n%C{ - }%c" name="InputFilter" filter_name="String2DoubleFilter"><comment><![CDATA[]]></comment></simple_filter></input_filter><output_filter><simple_filter creation_time="2018-25-10 14:22:36:212" caption_spec="%n%C{ - }%c" name="OutputFilter" format="g" digits="6" filter_name="Double2StringFilter"><comment><![CDATA[]]></comment></simple_filter></output_filter><row type="TypeDouble" index="0" invalid="no">2.0000000000000000e+02</row><row type="TypeDouble" index="1" invalid="no">2.5000000000000000e+02</row><row type="TypeDouble" index="2" invalid="no">3.0000000000000000e+02</row><row type="TypeDouble" index="3" invalid="no">3.5000000000000000e+02</row><row type="TypeDouble" index="4" invalid="no">4.0000000000000000e+02</row><row type="TypeDouble" index="5" invalid="no">4.5000000000000000e+02</row><row type="TypeDouble" index="6" invalid="no">0.0000000000000000e+00</row></column><column creation_time="2018-25-10 14:22:36:212" caption_spec="%n%C{ - }%c" name="2" type="TypeDouble" mode="Numeric" plot_designation="Y"><comment><![CDATA[]]></comment><input_filter><simple_filter creation_time="2018-25-10 14:22:36:212" caption_spec="%n%C{ - }%c" name="InputFilter" filter_name="String2DoubleFilter"><comment><![CDATA[]]></comment></simple_filter></input_filter><output_filter><simple_filter creation_time="2018-25-10 14:22:36:213" caption_spec="%n%C{ - }%c" name="OutputFilter" format="g" digits="6" filter_name="Double2StringFilter"><comment><![CDATA[]]></comment></simple_filter></output_filter><row type="TypeDouble" index="0" invalid="no">2.6502548189568697e-22</row><row type="TypeDouble" index="1" invalid="no">2.7936803738651234e-22</row><row type="TypeDouble" index="2" invalid="no">2.7484124048441610e-22</row><row type="TypeDouble" index="3" invalid="no">2.8846310954632597e-22</row><row type="TypeDouble" index="4" invalid="no">2.9230751679671355e-22</row><row type="TypeDouble" index="5" invalid="no">4.2188515346067236e-22</row><row type="TypeDouble" index="6" invalid="yes">0.0000000000000000e+00</row></column><column_width column="0">120</column_width><column_width column="1">120</column_width></table>
+geometry	0	0	854	503	
+
+</table>
+<multiLayer>
+Graph1	1	1	10/25/18 2:22 PM
+geometry	234	58	508	428	active
+WindowLabel		2
+Margins	5	5	5	5
+Spacing	5	5
+LayerCanvasSize	400	293
+Alignement	0	0
+<graph>
+ggeometry	5	5	489	369
+PlotTitle	 	#000000	4228
+<Antialiasing>1</Antialiasing>
+Background	#ffffff	255
+Margin	0
+Border	0	#2c2c2c
+grid	0	0	0	0	#0000ff	0	0	#a0a0a4	2	0	#0000ff	0	0	#a0a0a4	2	0	0	0	2	0
+EnabledAxes	1	0	1	0	
+AxesTitles	T	C			
+AxesTitleColors	#000000	#000000	#000000	#000000	
+AxesTitleAlignment	4	4	4	4
+TitleFont	Cantarell	13	75	0	0	0
+ScaleFont0	Cantarell	11	75	0	0	0
+ScaleFont1	Cantarell	11	75	0	0	0
+ScaleFont2	Cantarell	11	75	0	0	0
+ScaleFont3	Cantarell	11	75	0	0	0
+AxisFont0	Cantarell	11	50	0	0	0
+AxisFont1	Cantarell	11	50	0	0	0
+AxisFont2	Cantarell	11	50	0	0	0
+AxisFont3	Cantarell	11	50	0	0	0
+EnabledTickLabels	1	1	1	1	
+AxesColors	#000000	#000000	#000000	#000000
+AxesNumberColors	#2c2c2c	#2c2c2c	#2c2c2c	#2c2c2c
+AxesBaseline	0	0	0	0	
+CanvasBackground	#ffffff	255
+curve	Table4_1	Table4_2	1	0	0	0	1	7	1	0	0	0	0	31	0	2	0	0	6	1
+scale	0	2.5e-22	4.5e-22	0	8	5	0	0
+scale	1	2.5e-22	4.5e-22	0	8	5	0	0
+scale	2	150	500	0	8	5	0	0
+scale	3	150	500	0	8	5	0	0
+LabelsFormat	0	4	0	4	0	4	0	4	
+AxisType	0	0	0	0	
+MajorTicks	1	1	1	1	
+MinorTicks	1	1	1	1	
+TicksLength	5	9
+DrawAxesBackbone	1
+AxesLineWidth	1
+LabelsRotation	0	0
+</graph>
+</multiLayer>
+<log>
+</log>

@@ -4,6 +4,8 @@ PWD = $(shell pwd)
 ZIPFILE = $(shell basename $(PWD))
 DATE = $(shell date)
 
+$(shell mkdir -p data)
+
 # compiler
 FC := gfortran
 

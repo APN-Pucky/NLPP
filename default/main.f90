@@ -1,7 +1,7 @@
 program main
     use io
     implicit none
-    call select_loop((/&
+    call io_selectLoop((/&
         Select("Test", a),&
         Select("BBB", b)&
     /))
