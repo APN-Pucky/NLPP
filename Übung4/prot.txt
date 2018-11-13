@@ -1,0 +1,10 @@
+Alexander Neuwirth, Übung4, NLPP, Tue Nov  6 20:49:53 CET 2018, Jim Bachmann
+
+1)
+	a) src: modules/leq.f90 
+        Gibt Lösungsvektor (x_i) aus. (3/4, 1/4, 5/8)
+	b) 
+        Matrixelemente werden NaN, Infinity und -Infinity => Error. Mit Pivot wird es gelöst, wenn auch mit kleinen Rundungsfehlern. (0, 10,1/7)
+
+=> output.txt
+

@@ -1,0 +1,7 @@
+Alexander Neuwirth, Übung5, NLPP, Wed Nov 14 00:18:14 CET 2018, Jim Bachmann
+
+1) src: main.f90
+	a) LU=A passt
+	b) passt zu Ü4a
+    c) passt det(A)=8=-4*4*2+2*2*2+9*1*4-2*4*4+2*9*2-1*4*2
+

@@ -1,0 +1,13 @@
+./main.out
+Options: 
+  0) Quit
+  1) TESTE LEQ           
+  2) NULL                
+> 1
+ A) no_pivot
+  0.750000000      0.250000000      0.625000000    
+ B) pivot
+  -6.16532498E-06   9.99999809      0.142857149    
+> 0
+Quit
+
