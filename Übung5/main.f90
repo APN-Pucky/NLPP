@@ -60,6 +60,9 @@ program main
 
     print *, "x"
     print *, x
+    
+    print *, "y"
+    print *, y
 
     t=1        
     do i=1,n
