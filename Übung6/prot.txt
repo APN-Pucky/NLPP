@@ -1,0 +1,20 @@
+Alexander Neuwirth, Übung6, NLPP, Tue Nov 20 21:59:44 CET 2018, Jim Bachmann
+
+1) src/main.f90
+	a)  output.txt
+	b)  plot.pdf
+    c)  charakteristisches Polynom (1-x)(2-x)(1-x)-2(1-x) => x=1,x=3,x=0
+        LGS:    x=0 ersichtlich: (1,-1,1) 
+
+                        (0 1 0)*a=0 
+                x=1     (1 1 1)*b=0     => (1,0,-1)
+                        (0 1 0)*c=0
+    
+
+                        (-2  1  0)*a=0
+                x=3     ( 1 -1  1)*b=0  => (1,2,1)
+                        ( 0  1 -2)*c=0
+    
+        => passt bis auf Rundungsfehler und Skalierung.
+
+PS:
