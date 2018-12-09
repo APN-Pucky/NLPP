@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+**/data/big/*
+
+big_*
