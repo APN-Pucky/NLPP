@@ -1,0 +1,43 @@
+Alexander Neuwirth, Übung7, NLPP, Mon Dec  3 21:01:00 CET 2018, Jim Bachmann
+
+1)
+	a)  src: modules/eigen.f90
+	b)  output1.txt: Die 4 Eigenwerte sind durch x_i=
+            1: 0.5(5^(0.5)+1)
+            2: 0.5(5^(0.5)-1)
+            3: 0.5(-5^(0.5)+1)
+            4: 0.5(-5^(0.5)-1)
+        gegeben. 
+        Die möglichen Orbitalenergien betragen: E=a+x*b (mit a<0 und b<0)
+        Die Wellenfunktion ergibt sich direkt als Linearkombination der normierten Eigenvektoren mit dem zugehörigen Orbitalen.
+        Die 4 Elektronen befinden sind in den Orbitalen zu den Zuständen 1 und 2, da diese ein maximales x haben, also mit minimale Energie. 
+        Diagramm: diagramm1.png oder https://personalpages.manchester.ac.uk/staff/t.wallace/30412tw1/images/30412_lect1/image060.gif
+        Die Wellenfunktionen lassen sich ebenfalls der Graphik entnehmen. Positive Vorzeichen der Eigenvektorkomponenten bedeuten, dass die negative Hälfte (rot) des jeweiligen p-Orbitals nach oben zeigt.
+        Die Größe des Orbitals gibt jeweils an, ob es in den Gesamtzustand mit einem (relativen) Faktor von 0.60 oder 0.37 eingeht.
+
+        Delokalisierungsenergie E = E_Butadien - 2*E_Ethen = (4*a+(5^(0.5)*2)*b)-2*(2*a+2*b)= 0.472*b
+
+    c)  output2.txt: x_i=
+            1: 2
+            2: 0
+            3: 0
+            4: -2
+        Diagramm: diagramm2.png oder http://www.chemtube3d.com/images/aleximages/Cyclobutadiene.png
+        Es ist zu beachten, dass die Orbitale bei E=a, also die einfach besetzten Zustände, nicht gleich start ausgeprägt sind, da die zugehörigen Eigenvektoren Werte von +-0.7 und +-0.09 haben.
+        Die ausgefüllten Orbitale sind negativ.
+
+        Delokalisierungsenergie E = E_Cyclo - 2*E_Ethen = (4*a+2*b)-(4*a+4*b) = -2*b
+        Cyclobutadien ist nicht stabil, da die Delokalisierungsenergie geringer als die von Butadien ist (in Einehiten von b). 
+        Es zerfällt also in Butadien.
+
+    d)  output3.txt x_i=
+            1:  2
+            2:  1
+            3:  1
+            4:  -1
+            5:  -1
+            6:  -2
+        Diagramm: diagramm3.jpg oder https://slideplayer.org/slide/2912845/10/images/3/Molek%C3%BClorbitale+in+Benzol.jpg
+        Delokalisieringsenergie E = E_Benzol - 3*Ethen = (6*a+(4+4)*b)-(6*a+6*b) = 2*b
+        Benzol ist folglich stabil.
+        
