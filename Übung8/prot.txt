@@ -1,7 +1,31 @@
 Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
 
-1)
-	a)
-	b)
+Nomenklatur:
+
+eeho = einfacher Euler Harmonischer Oszilator
+keho = korrigierter
+ieho = iterativer
+
+eeho01 => dt = 0.01
+keho1 => dt = 0.1
+etc.
+
+a) 
+    Die getrennte DGLs sind x' = z und z' = -x.
+    Erstaunlicherweise passen die Funktionen x(t) unabhängig von der Schrittweite ziemlich gut zur analytischen Lösung (vgl. eehoXXplot.pdf, in rot ist die analytische Funktion und in schwarz die numerische).
+    Ein Fit an die Abweichung mit a*cos(t)*t ist nicht möglich (vgl eehoXX.pdf, schwarze Punkte sind die Abweichung und die rote ist der Fit.).
+    Die maximale Auslenkung der Abweichung ist konstant bei ca. a=dt
+b)
+    Die Abweichungen sind nun deutlich größer (vgl kehoXX.pdf) und es lässt sich a*cos(t)*t anfitten, jedoch lässt sich die Proportionalität dt*dt~a nicht zeigen (vgl. kehoerror.pdf)
+c) 
+    Die korrigierte Euler Methode liefert ein besseres Ergebnis (sogar mit weniger Rechenaufwand in meiner Implementation). (vlg. ieho15.pdf mit keho1.pdf)
+
+d)  
+    In den Grafiken kepler01.pdf und kepler05.pdf sieht man scheinbar nur eine Gerade. 
+    Wenn man sich den Verlauf jedoch in VMD anschaut, sieht man dass zunächst eine elliptische Bahn vorliegt, bis zu einem Punkt an dem sich der Planet nur noch scheinbar linear bewegt.
+    kepler0001.pdf zeigt deutlich eine Ellipse, jedoch verschmieren die einzelnen Umrundungen auch hier mit der Zeit.
+    
+    In 15kepler0001.pdf (r^-1.5) und 35kepler0001.pdf (r^-3.5) sind die Präzessionen deutlich erkenntlich.
+    Entgegen der Aufgabenstellung rotiert die Ellipse in 20kepler0001.pdf (r^-2) ebenfalls.
 
 PS:

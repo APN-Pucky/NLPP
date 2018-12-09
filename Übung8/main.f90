@@ -22,7 +22,7 @@ program main
             !vx = z
             x = x+vx *dt
             !vz = -x
-            write(f,*) i*dt,x
+            write(f,*) i*dt,x, (cos(i*dt)*2), (2*cos(i*dt)-x)
         end do
         call io_close(f)
     end subroutine
@@ -30,7 +30,7 @@ program main
     subroutine keho()
         integer :: i,f
         ! vx = z && vz = -x
-        real :: dt=0.001,t=100
+        real :: dt=0.1,t=100
         real :: x=2.,vx=0.
         !real :: vz=-2,z=0.
         real :: tvx, tx
@@ -40,12 +40,12 @@ program main
             tvx = vx-x *dt
             tx = x+tvx *dt
             vx = vx - (x+tx)/2*dt
-            print *, x , tx
+            !print *, x , tx
             !x
             tx = x + vx*dt
             tvx = vx -tx *dt
             x = x + (vx+tvx)/2*dt
-            write(f,*) i*dt,x
+            write(f,*) i*dt,x, (cos(i*dt)*2), (2*cos(i*dt)-x)
         end do
         call io_close(f)
     end subroutine
@@ -53,7 +53,7 @@ program main
     subroutine ieho()
         integer :: i,j,f,n =2
         ! vx = z && vz = -x
-        real :: dt=0.001,t=100
+        real :: dt=0.15,t=100
         real :: x=2.,vx=0.
         !real :: vz=-2,z=0.
         real :: tvx, tx
@@ -66,7 +66,7 @@ program main
                 tx = x+tvx *dt
             end do
             vx = vx - (x+tx)/2*dt
-            print *, x , tx
+            !print *, x , tx
             !x
             tvx = vx
             do j =1,n
@@ -74,37 +74,38 @@ program main
                 tvx = vx -tx *dt
             end do
             x = x + (vx+tvx)/2*dt
-            write(f,*) i*dt,x
+            write(f,*) i*dt,x, (cos(i*dt)*2), (2*cos(i*dt)-x)
         end do
         call io_close(f)
     end subroutine
 
     subroutine kepler()
         integer :: i,j,f,n,ff
-        real :: dt = 0.01,t=100
+        real :: dt = 0.0001,t=100
         real :: x=0.5,vx=0,y=0,vy=1.63,z=0
         real :: tx,tvx,ty,tvy
+        real :: r = 2.0
         f = io_openFile('data/kepler.xyz',"replace")
         ff = io_openFile('data/kepler.dat',"replace")
         do i=1,int(t/dt)
             !vx
-            tvx = vx-x/(sqrt((x*x+y*y))**3)*dt
+            tvx = vx-x/(sqrt((x*x+y*y))**r)*dt
             tx = x+tvx *dt
-            vx = vx - (x+tx)/2/(sqrt((x*x+y*y))**3)*dt
+            vx = vx - (x+tx)/2/(sqrt((x*x+y*y))**r)*dt
             !print *, x , tx
 
             !vy
-            tvy = vy-y/(sqrt((x*x+y*y))**3)*dt
+            tvy = vy-y/(sqrt((x*x+y*y))**r)*dt
             ty = y+tvy *dt
-            vy = vy - (y+ty)/2/(sqrt((x*x+y*y))**3)*dt
+            vy = vy - (y+ty)/2/(sqrt((x*x+y*y))**r)*dt
  
             !x
             tx = x + vx*dt
-            tvx = vx -tx/(sqrt((tx*tx+y*y))**3) *dt
+            tvx = vx -tx/(sqrt((tx*tx+y*y))**r) *dt
 
             !y
             ty = y + vy*dt
-            tvy = vy -ty/(sqrt((x*x+ty*ty))**3) *dt
+            tvy = vy -ty/(sqrt((x*x+ty*ty))**r) *dt
 
             !xy
             x = x + (vx+tvx)/2*dt
