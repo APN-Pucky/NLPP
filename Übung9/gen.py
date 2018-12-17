@@ -171,29 +171,4 @@ for isys in sys:
                 plt.savefig("Übung9/images/CO_%s_%s_dt%s_r%s_E.pdf"%(isys,imeth,idt,ir))
                 plt.show()
 
-Quit()
-
-data = np.loadtxt("MI/data/Glas.csv", skiprows = 0, delimiter = "\t")
-
-xdata = unp.uarray(data[:,0],unc_n)
-ydata = unp.uarray(data[:,1],unc_w)
-ydata = 1- unp.cos(ydata*grad*0.0376)
-
-fig=plt.figure(figsize=fig_size)
-plt.errorbar(unv(xdata),unv(ydata), usd(ydata), usd(xdata),fmt=' ', capsize=5,linewidth=2,label='Winkel')
-#plt.plot(x, y, label='noice')
-ppfit,pperr =  fit_curvefit(unv(xdata), unv(ydata), custom, yerr = usd(ydata), p0 = [1.7])
-#print(ppfit)
-pp = unp.uarray(ppfit, pperr)
-xdata = np.linspace(unv(xdata[0]),unv(xdata[-1]))
-plt.plot(xdata,unv(custom(xdata,*ppfit)), label='Fit n=%s'%(tuple(pp)))
-
-
-plt.legend(prop={'size':fig_legendsize})
-plt.grid()
-plt.tick_params(labelsize=fig_labelsize)
-plt.xlabel('Anzahl der Interferenzringe m')
-plt.ylabel('Winkel (1-cos$\\phi$)')
-plt.savefig("MI/images/Glas.pdf")
-plt.show()
 #end
