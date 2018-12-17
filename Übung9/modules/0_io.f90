@@ -22,20 +22,51 @@ module io
         
     subroutine io_selectLoop(array)
         type(Select), intent(in),dimension(:) :: array
-        integer :: s
+        integer :: s,i
+        character(*), parameter :: ff = '(50("-"),T8," ", A, " ")'
+        character(*), parameter :: lf = '(50("="))'
         s=-1
-        do while(s /= 0)
+        do while(s /= 99)
             if(.NOT. (s> 0 .AND. s <= size(array))) then
                 call print_opt(array%name)
             end if
             write(*,'(A)',advance="no") "> "
             read(*,*) s
+
+            if( s==0) then
+                do i=1,size(array)
+                    print lf
+                    print ff, trim(array(i)%name)
+                    print lf
+                    call array(i)%exec
+                end do
+            end if
+
             if(s> 0 .AND. s <= size(array)) then
+                print lf
+                print ff, trim(array(s)%name)
+                print lf
                 call array(s)%exec
             end if
         end do
         write(*,'(A)') "Quit"
     end subroutine
+
+    function rtoa(r)
+        real :: r
+        character(len=1024) ::rtoa 
+        write(rtoa,*) r
+        rtoa = adjustl(rtoa)
+    end function
+        
+    function itoa(i)
+        integer :: i
+        character(len=1024) ::itoa 
+        write(itoa,*) i
+        itoa = adjustl(itoa)
+    end function
+        
+        
 
     subroutine print_opt(names)
         Character(len=20), dimension(:) :: names
@@ -43,7 +74,8 @@ module io
         Character(*),parameter :: f='(T2,I2,") ",A)'
         j=0
         write(*,'(A)') "Options: "
-        write(*,f) j,"Quit"
+        write(*,f) 0,"All"
+        write(*,f) 99,"Quit"
         do j=1,size(names)
             write(*,f) j, names(j)
         end do
@@ -84,7 +116,7 @@ module io
         enddo
         i= -1
     end function
-    subroutine io_close(i)
+    subroutine io_closeFile(i)
         integer :: i
         nunit(i) = .true.
         close(i)
