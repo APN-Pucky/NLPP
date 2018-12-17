@@ -1,7 +1,34 @@
 Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
 
 1)
-	a)
-
+	a) src: modules/verlet.f90
+        Umrechnung von Angström zu Bohrradius => Faktor von ca. 2 
+        Die VMD Datei ist data/CO_xxx_verlet_dt20_r2.25000000.xyz , wobei cms für die Simulation im Schwerpunktsystem und lab für das Laborsystem steht.
+        
 	b)
+        Im Ordner images/ sind R und E gegen t, unter Variation des Bezugsystems, Startabstands R(0), Zeitschritte dt und Algorithmus (simple/corrected euler und verlet), aufgetragen.
+        Die Frequenz in 1/a.u. lässt sich mit alpha/a_0 also Feinstrukturkonstante und Bohrradius in 1/cm Umrechnen.
+        Die Schwingungsfrequenz k nimmt mit dem Startradius ab.
+
+        r(0)=2.3 => k=2210 1/cm
+        r(0)=2.5 => k=2072 1/cm
+        r(0)=3.0 => k=1796 1/cm
+
+        Der Trend ergibt sich daraus, dass mit größerem Abstand mehr Energie im Potential erhalten ist. 
+        Außerdem schwankt die Gesamtenergie weniger bei geringerem Startabstand.
+
+        Der exp. Literaturwert der Schwingungsfrequenz beträgt k = 2169.8 1/cm und ist damit am nächsten zu r(0)=2.3.
+        
+    c)  r(0)=2.3
+        Beim korrigierten Euler-Algorithmus nimmt die Energie scheinbar exponentiell ab.
+        Beim Verlet-Algorithmus schwanket sie dagegen nur ein bischenin einer hinteren Nachkommastelle.
+        Bei einer Schrittweite von dt=100 sind fast keine Oszillationen mehr erkennbar beim Euler Algorithmus. (CO_xxx_corrected_euler_dt100_r2.99999995.pdf).
+        Der Verlet Algorithmus dagegen liefert nach wie vor eine k von ca 2200 1/cm, jedoch schwankt die Energie deutlicher.
+        
+        Der Verlet-Algorithmus liefert also bessere Ergebnisse.
+
+        Bei einem dt=100 ist R(t) mit dem Verlet-Algorithmus ziemlich sprunghaft, weshalb eine obere Schranke von ca. dt=40 sinnvoll ist für glatte Funktionen.
+
+        Allerdings lässt sich mit dt=100 immer noch ziemlich gut die Schwingungsfrequenz bestimmen.
+        
 
