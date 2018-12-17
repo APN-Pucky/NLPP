@@ -54,7 +54,7 @@ module io
         write(*,'(2(A))') "Opening: ", fname
     end function
     
-    function io_openFile(default_fname,mode) result(i)
+    function io_openFileAsk(default_fname,mode) result(i)
         integer ::i
         Character(len=*) :: mode,default_fname
         do i=1,99
@@ -67,6 +67,18 @@ module io
         i= -1
     end function
 
+    function io_openFile(default_fname,mode) result(i)
+        integer ::i
+        Character(len=*) :: mode,default_fname
+        do i=1,99
+            if(nunit(i)) then  
+                nunit(i) = .false.
+                open(unit=i, file=default_fname, status=mode) 
+                return 
+            endif 
+        enddo
+        i= -1
+    end function
     subroutine io_close(i)
         integer :: i
         nunit(i) = .true.

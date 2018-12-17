@@ -112,63 +112,66 @@ unc_p = 0
 unc_w = 0
 # import der messwerte
 sys = ["lab","cms"]
+meth = ["verlet","corrected_euler","simple_euler"]
 dt = ["100","20","40"]
 r = ["2.29999995","3.00000000","2.50000000"]
 for isys in sys:
-    for idt in dt:
-        for ir in r:
-            data = np.genfromtxt("Übung9/data/CO_%s_dt%s_r%s.dat"%(isys,idt,ir))
+    for imeth in meth:
+        for idt in dt:
+            for ir in r:
+                print ("Übung9/data/CO_%s_%s_dt%s_r%s.dat"%(isys,imeth,idt,ir))
+                data = np.genfromtxt("Übung9/data/CO_%s_%s_dt%s_r%s.dat"%(isys,imeth,idt,ir))
 
-            xdata = data[:,0]
-            ydata = data[:,1]
-            zdata = data[:,2]
+                xdata = data[:,0]
+                ydata = data[:,1]
+                zdata = data[:,2]
 
-            #print(data[:,1])
+                #print(data[:,1])
 
-            my = np.mean(ydata)
-            oy = float(ir)
-            cy = 0
-            #print(my)
-            for yy in ydata:
-                if(oy -my > 0 and yy-my<0):
-                    cy=cy+1
-                oy = yy
-            cy = cy/2
-            print(cy)
-            print (cy/xdata[-1]/137/(5.29177211*10**-9))
-            fig=plt.figure(figsize=fig_size)
-            plt.plot(xdata,ydata, label='R(t), k=%s 1/cm'%(cy/xdata[-1]/137.036/(5.29177211*10**-9)), linewidth=1) #, usd(ydata), usd(xdata),fmt=' ', capsize=5,linewidth=2,label='R(t)')
-                        #pfit, perr = fit_curvefit(unv(xdata), unv(ydata), cyclic, p0 = [0.5,2.3,0.1,0])
-            #pp = unp.uarray(pfit, perr)
-            #tdata = np.linspace(unv(xdata[0]),unv(xdata[-1]))
-            #plt.plot(tdata,unv(cyclic(tdata,*pfit)), label='Cyclic Fit')# p=a*m+b\na=%s mbar\nb=%s mbar'%tuple(pp))
-            #plt.plot(x, y, label='noice')
+                my = np.mean(ydata)
+                oy = float(ir)
+                cy = 0
+                #print(my)
+                for yy in ydata:
+                    if(oy -my > 0 and yy-my<0):
+                        cy=cy+1
+                    oy = yy
+                print(cy)
+                print (cy/xdata[-1]/137/(5.29177211*10**-9))
+                fig=plt.figure(figsize=fig_size)
+                plt.plot(xdata,ydata, label='R(t), k=%s+-%s 1/cm'%(cy/xdata[-1]/137.036/(5.29177211*10**-9),0.3/xdata[-1]/137.036/(5.29177211*10**-9)), linewidth=1) #, usd(ydata), usd(xdata),fmt=' ', capsize=5,linewidth=2,label='R(t)')
+                #pfit, perr = fit_curvefit(unv(xdata), unv(ydata), cyclic, p0 = [0.5,2.3,0.1,0])
+                #pp = unp.uarray(pfit, perr)
+                #tdata = np.linspace(unv(xdata[0]),unv(xdata[-1]))
+                #plt.plot(tdata,unv(cyclic(tdata,*pfit)), label='Cyclic Fit')# p=a*m+b\na=%s mbar\nb=%s mbar'%tuple(pp))
+                #plt.plot(x, y, label='noice')
 
-            plt.legend(prop={'size':fig_legendsize})
-            plt.grid()
-            plt.tick_params(labelsize=fig_labelsize)
-            plt.xlabel('Zeit t in a.u.')
-            plt.ylabel('R(t) in a.u.')
-            plt.savefig("Übung9/images/CO_%s_dt%s_r%s_R.pdf"%(isys,idt,ir))
-            plt.show()
+                plt.legend(prop={'size':fig_legendsize})
+                plt.grid()
+                plt.tick_params(labelsize=fig_labelsize)
+                plt.xlabel('Zeit t in a.u.')
+                plt.ylabel('R(t) in a.u.')
+                plt.savefig("Übung9/images/CO_%s_%s_dt%s_r%s_R.pdf"%(isys,imeth,idt,ir))
+                plt.show()
 
-            fig=plt.figure(figsize=fig_size)
+                fig=plt.figure(figsize=fig_size)
 
-            plt.plot(xdata,zdata, label='E(t)', linewidth=1) #, usd(ydata), usd(xdata),fmt=' ', capsize=5,linewidth=2,label='R(t)')
+                plt.plot(xdata,zdata, label='E(t)', linewidth=1) #, usd(ydata), usd(xdata),fmt=' ', capsize=5,linewidth=2,label='R(t)')
 
-            #pfit, perr = fit_curvefit(unv(xdata), unv(ydata), gerade, yerr = usd(ydata), p0 = [1, 0])
-            #pp = unp.uarray(pfit, perr)
-            #xdata = np.linspace(unv(xdata[0]),unv(xdata[-1]))
-            #plt.plot(xdata,unv(gerade(xdata,*pfit)), label='Linear Fit p=a*m+b\na=%s mbar\nb=%s mbar'%tuple(pp))
-            #plt.plot(x, y, label='noice')
-            plt.legend(prop={'size':fig_legendsize})
-            plt.grid()
-            plt.tick_params(labelsize=fig_labelsize)
-            plt.xlabel('Zeit t in a.u.')
-            plt.ylabel('E(t) in a.u.')
-            plt.savefig("Übung9/images/CO_%s_dt%s_r%s_E.pdf"%(isys,idt,ir))
-            plt.show()
-quit()
+                #pfit, perr = fit_curvefit(unv(xdata), unv(ydata), gerade, yerr = usd(ydata), p0 = [1, 0])
+                #pp = unp.uarray(pfit, perr)
+                #xdata = np.linspace(unv(xdata[0]),unv(xdata[-1]))
+                #plt.plot(xdata,unv(gerade(xdata,*pfit)), label='Linear Fit p=a*m+b\na=%s mbar\nb=%s mbar'%tuple(pp))
+                #plt.plot(x, y, label='noice')
+                plt.legend(prop={'size':fig_legendsize})
+                plt.grid()
+                plt.tick_params(labelsize=fig_labelsize)
+                plt.xlabel('Zeit t in a.u.')
+                plt.ylabel('E(t) in a.u.')
+                plt.savefig("Übung9/images/CO_%s_%s_dt%s_r%s_E.pdf"%(isys,imeth,idt,ir))
+                plt.show()
+
+Quit()
 
 data = np.loadtxt("MI/data/Glas.csv", skiprows = 0, delimiter = "\t")
 
