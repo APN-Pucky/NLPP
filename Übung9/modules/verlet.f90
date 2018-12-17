@@ -3,6 +3,11 @@ module verlet
     !TODO numeric energy diff
     implicit none
 
+    real,parameter :: morse_d=0.493172 
+    real,parameter :: morse_a=1.0883376020965 
+    real,parameter :: morse_r0=2.2696744602423 
+
+
  
     abstract interface 
         function func_xyz_xyz(xyz,n)
@@ -26,11 +31,6 @@ module verlet
         Character (len=20) :: name
         procedure(func_step),pointer,nopass :: exec
     end type
-
-    real,parameter :: morse_d=0.493172 
-    real,parameter :: morse_a=1.0883376020965 
-    real,parameter :: morse_r0=2.2696744602423 
-
 
 
     contains
@@ -123,8 +123,8 @@ module verlet
         real :: r0(3) = (/ 2.5,2.3,3.0/)
         type(Step) :: steps(3) 
         integer i,j,k
-        steps = (/ Step("verlet",verlet_step), Step("corrected_euler",corrected_euler_step),& 
-    Step("simple_euler",simple_euler_step) /)
+        steps = (/ Step("verlet",verlet_step), Step("corrected_euler",corrected_euler_step), &
+        Step("simple_euler",simple_euler_step) /)
         do i=1,size(dt)
             do j=1,size(r0)
                 do k=1,size(steps)
@@ -139,16 +139,20 @@ module verlet
         integer,parameter :: n=1
         real :: r0
         integer :: dt
-        real :: o_xyz(3,n)= 0.!reshape((/ r0,0.,0./),(/ 3,n /))
-        real :: c_xyz(3,n)= 0.!reshape((/ 0.,0.,0./),(/ 3,n /))
-        real :: v(3,n) = 0.!reshape((/ 0.,0.,0./),(/ 3,n /))
-        real :: f(3,n) = 0.!reshape((/0.,0.,0./),(/ 3,n /))
+        real :: o_xyz(3,n)!reshape((/ r0,0.,0./),(/ 3,n /))
+        real :: c_xyz(3,n)!reshape((/ 0.,0.,0./),(/ 3,n /))
+        real :: v(3,n) !reshape((/ 0.,0.,0./),(/ 3,n /))
+        real :: f(3,n) !reshape((/0.,0.,0./),(/ 3,n /))
         real :: m(n) = (/12506/) !m_C*m_O/(m_C+m_O)/m_e *[m_e]
         integer :: i,ff,fd
         integer :: max_dt = 10000
         procedure(func_xyz_xyz),pointer :: force => grad_morse_potential_cms
         procedure(func_xyz_a),pointer :: pot => morse_potential_cms
         type(Step) :: s 
+        o_xyz = 0.
+        c_xyz = 0.
+        v = 0.
+        f = 0.
         o_xyz(1,1) = r0
         ff = io_openFile("data/CO_cms_" // trim(s%name)//"_dt" //trim(itoa(dt))// "_r" //trim(rtoa(r0))//".xyz","replace")
         fd = io_openFile("data/CO_cms_" // trim(s%name)//"_dt" //trim(itoa(dt))// "_r" //trim(rtoa(r0))//".dat","replace")
@@ -166,15 +170,18 @@ module verlet
         integer,parameter :: n=2
         real :: r0
         integer :: dt
-        real :: oc_xyz(3,n)= 0.!reshape((/ 2.5,0.,0.,0.,0.,0./),(/ 3,n /))
-        real :: v(3,n) = 0.!reshape((/ 0.,0.,0.,0.,0.,0./),(/ 3,n /))
-        real :: f(3,n) = 0. !reshape((/0.,0.,0.,0.,0.,0./),(/ 3,n /))
+        real :: oc_xyz(3,n)!reshape((/ 2.5,0.,0.,0.,0.,0./),(/ 3,n /))
+        real :: v(3,n) !reshape((/ 0.,0.,0.,0.,0.,0./),(/ 3,n /))
+        real :: f(3,n) !reshape((/0.,0.,0.,0.,0.,0./),(/ 3,n /))
         real :: m(n) = (/29164,21895/) !m_O,m_C
         integer :: i,ff,fd
         integer :: max_dt = 10000
         procedure(func_xyz_xyz),pointer :: force => grad_morse_potential_lab
         procedure(func_xyz_a),pointer :: pot => morse_potential_lab
         type(Step) :: s
+        oc_xyz = 0.
+        v = 0.
+        f = 0.
         oc_xyz(1,1)= r0
         ff = io_openFile("data/CO_lab_" // trim(s%name)//"_dt" //trim(itoa(dt))// "_r" //trim(rtoa(r0))//".xyz","replace")
         fd = io_openFile("data/CO_lab_" // trim(s%name)//"_dt" //trim(itoa(dt))// "_r" //trim(rtoa(r0))//".dat","replace")
