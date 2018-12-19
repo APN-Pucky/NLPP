@@ -10,6 +10,7 @@ MODULE mfunktion
                 procedure(fffunc), pointer :: p_plus => base_plus
                 procedure(fffunc), pointer :: p_pow => base_pow
                 procedure(fffunc), pointer :: p_mult => base_mult
+                !procedure(fffunc), pointer :: p_chain => base_chain
                 type(funktion), pointer, dimension(:) :: p_f_array
                 logical :: is_allocated = .false.
                 CONTAINS
@@ -73,6 +74,7 @@ MODULE mfunktion
         CONTAINS 
                 include 'base_operations.inc'
                 include 'dx_operations.inc'
+                include 'funktions.inc'
 
                 subroutine alloc(self,n)
                         type(funktion) :: self

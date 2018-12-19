@@ -2,6 +2,7 @@ program main
     use io
     use metal
     use matrix
+    use mfunktion
     implicit none
     call init
     call io_selectLoop((/&
@@ -32,6 +33,11 @@ program main
     end subroutine
 
     subroutine b()
-        call assert(1,1)
+        type(funktion) :: p
+        integer :: i
+        p = sinus(2*x)
+        do i=1,10
+            print *, p%get(real(i))
+        end do
     end subroutine
 end program

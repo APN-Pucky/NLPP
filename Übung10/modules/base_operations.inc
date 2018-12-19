@@ -1,7 +1,13 @@
+real function eval_chain(self,x)
+class(funktion) :: self
+real :: x
+eval_chain = self%p_f_array(1)%get(self%p_f_array(2)%get(x))
+end function
+
 real function eval_pow(self,x)
 class(funktion) :: self
 real :: x
-eval_pow = self%p_f_array(1)%get(x)**self%p_f_array(2)%get(x)
+eval_pow = self%p_f_array(1)%get(x)**self%p_f_array(2)%get(x) !swap 2
 end function
 real function eval_minus(self,x)
 class(funktion) :: self
@@ -23,11 +29,20 @@ class(funktion) :: self
 real :: x
 eval_div = self%p_f_array(1)%get(x)/self%p_f_array(2)%get(x)
 end function
+
+function base_chain(A,B) result(C)
+class(funktion) :: A
+type(funktion) :: B,C
+call alloc(c,2)
+C%p_f_array = (/A,B/) 
+C%p_eval => eval_chain
+end function
+
 function base_pow(A,B) result(C)
 class(funktion) :: A
 type(funktion) :: B,C
 call alloc(c,2)
-C%p_f_array = (/B,A/)
+C%p_f_array = (/B,A/)!swap 2
 C%p_eval => eval_pow
 end function
 function base_minus(A,B) result(C)
@@ -94,7 +109,7 @@ real,INTENT(IN) :: B
 type(funktion) :: C
 C = (d*B)-A
 end function
-function pow_f(A,B) result(C)
+function pow_f(A,B) result(C) !swap 1
 class(funktion),INTENT(IN) :: A
 type(funktion), INTENT(IN) :: B 
 type(funktion) :: C

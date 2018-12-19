@@ -147,6 +147,11 @@ module matrix
         integer :: k
         print *, (A(k,:),nl,k=1,size(A,2))
     end subroutine
+    subroutine wr(f,A)
+        real, dimension(:,:) :: A
+        integer :: k,f
+        write(f,*) (A(k,:),nl,k=1,size(A,2))
+    end subroutine
 
     function lu_determinant(a) result(det)
         integer :: n

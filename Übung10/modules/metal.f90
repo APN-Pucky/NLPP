@@ -1,6 +1,7 @@
 module metal
     use mfunktion
     use matrix
+    use io
     implicit none
     contains    
 
@@ -81,7 +82,7 @@ module metal
             end do
         end do
                 
-        call pr(grid)
+        !call pr(grid)
 
     end function
 
@@ -91,7 +92,6 @@ module metal
         real :: length,width
         type(funktion) :: borders(4)
         real ::r 
-
             r = 0.
             if(i==1) then
                  r = r + borders(1)%get(length*(j-1)/(n-1))
@@ -105,15 +105,44 @@ module metal
     end function
 
     subroutine test_metal
-        integer,parameter :: n=5,m=5
-        real :: grid(n,m)=0
+        integer,parameter :: n(3)=(/5,10,20 /),m(3)=(/5,10,20/)
+        integer :: i
         real :: length=0.5,width=0.5
-        type(funktion) :: borders(4)
-        borders(1) = nil
-        borders(2) = nil
-        borders(3) = x*200
-        borders(4) = x*200
-        grid= sim_metal(length,width,n,m,borders)
+        type(funktion) :: lin_borders(4)
+        type(funktion) :: sin_borders(4)
+        lin_borders(1) = nil
+        lin_borders(2) = nil
+        lin_borders(3) = x*200
+        lin_borders(4) = x*200
+
+        sin_borders(1) = nil
+        sin_borders(2) = sinus(10*(x+0.25))*1000
+        sin_borders(3) = nil!sinus(100*x)*1000
+        sin_borders(4) = sinus(10*x)*1000
+        do i=1,size(n)
+            call save_sim(trim(itoa(n(i)))//"x"//trim(itoa(m(i)))//"_metal",&
+length,width,sim_metal(length,width,n(i),m(i),lin_borders))
+        end do
+        call save_sim(trim(itoa(40))//"x"//trim(itoa(40))//"_metal",&
+length,width,sim_metal(length,width,40,40,sin_borders))
     end subroutine
 
+    subroutine save_sim(s,length,width, grid)
+        character(*) :: s
+        real :: grid(:,:)
+        real :: length,width
+        integer :: f,n,m,i,j
+        n= size(grid,1)
+        m=size(grid,2)
+        f = io_openFile("data/"//s//".mat","replace")
+        call wr(f,grid)
+        call io_closeFile(f)
+        f = io_openFile("data/"//s//".dat","replace")
+        do i =1,n
+            do j =1,m
+                write(f,*) (i-1)*length/(n-1),(j-1)*width/(m-1),grid(i,j)
+            end do
+        end do
+        call io_closeFile(f)
+    end subroutine
 end module
