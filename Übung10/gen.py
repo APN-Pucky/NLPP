@@ -233,7 +233,7 @@ def frange(start, stop, step):
     while i <= stop:
         yield i
         i += step
-ns = ["5","10","20","40","50"]
+ns = ["5","10","20","30","40","50"]
 data = np.genfromtxt("Übung10/data/5x5_metal.mat")
 fig,ax= plt.subplots()
 im,cbar = heatmap(data,0.5,0.5,ax=ax,cmap="coolwarm",cbarlabel=u"heat [T/°C]")

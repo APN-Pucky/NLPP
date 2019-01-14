@@ -126,6 +126,7 @@ for isys in sys:
                 ydata = data[:,1]
                 zdata = data[:,2]
 
+
                 #print(data[:,1])
 
                 my = np.mean(ydata)

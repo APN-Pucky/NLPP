@@ -1,7 +1,7 @@
-Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
+Alexander Neuwirth, Übung10, NLPP, Wed Dec 19 19:25:08 CET 2018, Jim Bachmann
 
 1)
-	a)
-	b)
-
-PS:
+	a) src: modules/metal.f90
+	b)  
+        Im images/ Ordner sind die 3D Plots für ein Gitter von 5x5, 10x10 und 20x20, wobei die linearen Randbedingungen verwendet wurden.
+        30x30,40x40 und 50x50 sind verschiedene periodische Randbedingungen bei einem größeren Gitter.

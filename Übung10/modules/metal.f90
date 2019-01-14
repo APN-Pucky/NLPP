@@ -1,5 +1,6 @@
 module metal
     use mfunktion
+    use constants
     use matrix
     use io
     implicit none
@@ -116,15 +117,15 @@ module metal
         lin_borders(4) = x*200
 
         sin_borders(1) = nil
-        sin_borders(2) = sinus(10*(x+0.25))*1000
+        sin_borders(2) = sinus(2*pi*2*2*(x))*100
         sin_borders(3) = nil!sinus(100*x)*1000
-        sin_borders(4) = sinus(10*x)*1000
+        sin_borders(4) = sinus(2*pi*2*x)*100
         do i=1,size(n)
             call save_sim(trim(itoa(n(i)))//"x"//trim(itoa(m(i)))//"_metal",&
 length,width,sim_metal(length,width,n(i),m(i),lin_borders))
         end do
-        call save_sim(trim(itoa(40))//"x"//trim(itoa(40))//"_metal",&
-length,width,sim_metal(length,width,40,40,sin_borders))
+        call save_sim(trim(itoa(30))//"x"//trim(itoa(30))//"_metal",&
+length,width,sim_metal(length,width,30,30,sin_borders))
     end subroutine
 
     subroutine save_sim(s,length,width, grid)
