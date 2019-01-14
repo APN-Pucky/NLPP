@@ -1,4 +1,5 @@
 MODULE mfunktion
+        use constants
         IMPLICIT NONE
         type funktion
                 procedure(func), pointer,nopass :: p_f => id
@@ -20,9 +21,18 @@ MODULE mfunktion
                 procedure, pass :: evaluate
                 procedure, pass :: evaluate_a
         end type
+
         interface nst_newton
                 module procedure nst_newton_f,nst_newton_fdf,nst_bisection
         end interface
+
+        interface dft
+                module procedure dft_f,dft_y
+        end interface
+        interface idft
+                module procedure idft_y!,idft_f
+        end interface
+
         abstract interface
                 real function func(x)
                         real :: x
@@ -64,10 +74,11 @@ MODULE mfunktion
 
 
         type(funktion) :: x,dx,d,nil
-        real :: e = exp(1.)
+        !real :: e = exp(1.)
         real :: h = sqrt(1e-7)
         real :: eps = 1e-5
         integer :: N = 5 !odd!
+        real :: dt
         integer :: max_iter = 10000
 
 
@@ -104,6 +115,32 @@ MODULE mfunktion
                         real :: x
                         class(funktion) :: self
                         base_func = self%p_f(x)
+                end function
+
+                function dft_y(dy,t_start)
+                        complex :: dy(N)
+                        complex :: dft_y(N+1)
+                        complex :: i = (0.,1.)
+                        integer :: nn,k
+                        real :: t_start
+                        dft_y = (/(sum((/(dy(k+1)*exp(-i*2*pi/N/dt*(t_start+dt*k)*nn),k=0,N-1)/)),nn=0,N)/)
+                end function
+
+                function idft_y(dy,t_start)
+                        complex :: dy(N+1)
+                        complex :: idft_y(N)
+                        complex :: i = (0.,1.)
+                        integer :: nn,k
+                        real :: t_start
+                        idft_y = (/(sum((/(dy(nn+1)*exp(i*2*pi/N/dt*(t_start+dt*k)*nn),nn=0,N-1)/)),k=0,N)/)/N
+                end function
+
+                function dft_f(f,t_start) !set dt and N before
+                        complex :: dft_f(N+1)
+                        type(funktion) :: f
+                        integer :: i
+                        real :: t_start
+                        dft_f = dft_y((/(cmplx(f%get(t_start+dt*i),0.),i=0,N-1)/),t_start)
                 end function
 
                 real function nst_newton_fdf(f,df,x) ! Newton NST mit gegebener Ableitung!

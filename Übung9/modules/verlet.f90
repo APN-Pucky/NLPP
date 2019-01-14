@@ -119,7 +119,7 @@ module verlet
     ! CO Test/Sim
 
     subroutine test_CO
-        integer :: dt(3) = (/20,40,100/)
+        integer :: dt(3) = (/10,40,100/)
         real :: r0(3) = (/ 2.5,2.3,3.0/)
         type(Step) :: steps(3) 
         integer i,j,k
@@ -160,7 +160,7 @@ module verlet
         do i=1,max_dt,dt
             CALL s%exec(o_xyz,v,f,m,real(dt),force,n)
             CALL io_writeXYZ(ff,(/'O','C'/), (/ o_xyz(:,:), c_xyz(:,:) /))
-            write(fd,*) i, sqrt(sum(o_xyz(:,1)**2)), total_energy(o_xyz,v,m,pot,n)
+            write(fd,*) i, sqrt(sum(o_xyz(:,1)**2)), total_energy(o_xyz,v,m,pot,n), v(1,1)
         end do
         call io_closeFile(ff)
         call io_closeFile(fd)
