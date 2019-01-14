@@ -1,0 +1,8 @@
+Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
+
+1)
+	a) analytisch: 
+        F(y(t)) = F(1-heaviside(t^2-1)) = int_{-1}^{1} e^-(iwt)/sqrt(2pi) = sqrt(2/pi)*sinc(x)
+	b)
+
+PS:
