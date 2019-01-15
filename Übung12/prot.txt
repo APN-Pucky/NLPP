@@ -1,7 +1,16 @@
-Alexander Neuwirth, {dir}, NLPP, {date}, Jim Bachmann
+Alexander Neuwirth, Übung12, NLPP, Wed Jan 16 00:07:21 CET 2019, Jim Bachmann
 
 1)
 	a)
-	b)
+        Autokorrelationsfunktionen: akf.pdf und gemittelt: makf.pdf
+        Schwingungsspektren: fakf.pdf und gemittelt: fmakf.pdf
+        Das Spektrum von der gemittelten Autokorrelationsfunktion ist deutlich glatter. 
+        Die Peak Positionen sind in akf und makf gleich.
+        Ein Vergleich mit der Literatur zeigt für die ersten deutlichsten peaks:
 
-PS:
+            500cm-1 ~ L_1 librations
+            1500cm-1 ~ v_2 bend
+            22000cm-1 ~ av_1+bv_3; a+b=7
+            25000cm-1 ~ av_1+bv_3; a+b=8
+        
+

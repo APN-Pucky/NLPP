@@ -16,6 +16,22 @@ module analysis
     end interface
 
     contains
+                function akf(dat_y)
+                    integer :: i
+                    real :: dat_y(:,:)
+                    real :: akf(size(dat_y,2))
+                    akf = (/(sum(dat_y(:,1)*dat_y(:,i)),i=1,size(akf))/) ! v(0)*v(t)
+                end function
+                    
+                function makf(dat_y) !gemittelte akf
+                    integer :: i,k,n
+                    real :: dat_y(:,:)
+                    real :: makf(size(dat_y,2))
+                    n = size(makf)
+                    makf = (/((sum((/(sum(dat_y(:,k+1)*dat_y(:,k+i)),k=0,n-i)/))/(n-i)),i=1,n-1)/) !n-i=k_max
+                    makf(n) = sum(dat_y(:,1)*dat_y(:,n))
+                end function
+
                 real function nst_newton_fdf(f,df,x) ! Newton NST mit gegebener Ableitung!
                         real :: x
                         type(funktion) :: f,df,t

@@ -11,7 +11,10 @@ module io
         Character (len=20) :: name
         procedure(sub_interface),POINTER,NOPASS :: exec
     end type
-    logical, dimension(99) :: nunit=.true.
+
+    integer, parameter :: max_n=64
+    logical, dimension(max_n) :: nunit=.true.
+
     !formats!
     !100 FORMAT(50("="),T8,A)
     !101 FORMAT(50("-"),T5,A)
@@ -78,7 +81,7 @@ module io
     function io_openFileAsk(default_fname,mode) result(i)
         integer ::i
         Character(len=*) :: mode,default_fname
-        do i=1,99
+        do i=7,max_n
             if(nunit(i)) then  
                 nunit(i) = .false.
                 open(unit=i, file=io_getFileName(default_fname), status=mode) 
@@ -91,7 +94,7 @@ module io
     function io_openFile(default_fname,mode) result(i)
         integer ::i
         Character(len=*) :: mode,default_fname
-        do i=1,99
+        do i=7,max_n
             if(nunit(i)) then  
                 nunit(i) = .false.
                 open(unit=i, file=default_fname, status=mode) 
@@ -100,6 +103,14 @@ module io
         enddo
         i= -1
     end function
+    subroutine io_closeAllFiles
+        integer :: i 
+        do i=7,max_n
+            if(.NOT. nunit(i)) then
+                call io_closeFile(i)
+            end if
+        end do 
+    end subroutine
     subroutine io_closeFile(i)
         integer :: i
         nunit(i) = .true.
@@ -128,4 +139,13 @@ module io
             write(f,*) c(i), xyz(i:i+3)
         end do
     end subroutine
+    function io_getFileLines(f) result(nlines)
+        integer :: f,nlines
+        nlines = 0
+        do 
+            read (f,*,END=10)
+            nlines = nlines +1
+        end do
+        10 rewind(f)
+    end function
 end module

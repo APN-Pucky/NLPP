@@ -6,9 +6,9 @@ program main
     implicit none
     call init
     call io_selectLoop((/&
-        Select("Test a", test_a),&
-        Select("Test DFT", test_dft),&
-        Select("Test CO", test_co)&
+        Select("Test AKF", test_akf)&
+        !Select("Test DFT", test_dft),&
+        !Select("Test CO", test_co)&
     /))
 
     contains 
@@ -55,7 +55,7 @@ program main
         r=dft(cmplx(v(4,:),0.),1.)
 
         f=io_openFile("data/co-f-real.dat","replace")
-        write( f,*) (i*1./N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),nl,i=1,N+1)
+        write( f,*) ((i-1.)/N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),nl,i=1,N+1)
         call io_closeFile(f)
 
         print *, v(4,:)
@@ -64,12 +64,36 @@ program main
     end subroutine
 
 
-    subroutine test_a()
-        type(funktion) :: p
-        integer :: i
-        p = 1-heaviside(x**2-1)
-        do i=1,10
-            print *,real(i)/5, p%get(real(i)/5)
-        end do
+    subroutine test_akf()
+        integer :: i,f,ff,fff,ffff,fffff
+        real,allocatable :: dat(:,:)
+        real,allocatable :: a(:)
+        complex,allocatable :: r(:)
+        f = io_openFile("data/traj-h2o.dat","old")
+        ff = io_openFile("data/akf.dat","replace")
+        fff = io_openFile("data/makf.dat","replace")
+        ffff = io_openFile("data/fakf.dat","replace")
+        fffff = io_openFile("data/fmakf.dat","replace")
+        n=io_getFileLines(f)
+        dt = 20
+        allocate(dat(7,n))
+        allocate(a(n))
+        allocate(r(n+1))
+        read(f,*) dat(:,:)
+        a = akf(dat(5:7,:))
+        r = dft(cmplx(a,0.),0.)
+        write( ffff,*) ((i-1.)/N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),aimag(r(i)*dt/sqrt(2*pi)),nl,i=1,N+1)
+        write(ff,*) ((dt*i-dt),a(i),nl,i=1,n)
+        a = makf(dat(5:7,:))
+        r = dft(cmplx(a,0.),0.)
+        write( fffff,*) ((i-1.)/N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),aimag(r(i)*dt/sqrt(2*pi)),nl,i=1,N+1)
+        
+        write(fff,*) ((dt*i-dt),a(i),nl,i=1,n)
+
+        call io_closeAllFiles
+
+        deallocate(dat)
+        deallocate(a)
+        deallocate(r)
     end subroutine
 end program
