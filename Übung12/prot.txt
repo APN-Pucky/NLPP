@@ -1,28 +1,35 @@
-Alexander Neuwirth, Übung12, NLPP, {date}, Jim Bachmann
+Alexander Neuwirth, Übung12, NLPP, Wed Jan 23 17:02:58 CET 2019, Jim Bachmann
 
 1)
 	a)
-	    VMD Visualisierung: data/h2o.mpg
+        VMD Visualisierung: h2o.mpg
 
         Autokorrelationsfunktionen: akf.pdf und gemittelt: makf.pdf
 
-        Schwingungsspektren: fakf.pdf und gemittelt: fmakf.pdf
+	    Aufgrund der Periodizität der AKF wird ein Schwingungsspektrum mit einigen deutlichen Peaks erwartet.
 
-        Das Spektrum von der gemittelten Autokorrelationsfunktion ist deutlich glatter. 
-        Die deutlichsten Peak Positionen sind in akf und makf gleich.
-        Ein Vergleich mit der Literatur zeigt für die ersten deutlichsten Peaks:
+        Schwingungsspektren: fakf.pdf und gemittelt: fmakf.pdf
+	
+
+        Das Spektrum der gemittelten Autokorrelationsfunktion ist deutlich glatter. 
+        Die deutlichsten Peak Positionen sind in den Fouriertransformationen von akf und makf gleich:
 
             1550cm^-1
             3550cm^-1
 
         Diese decken sich mit den Literaturwerten mit einer Abweichung von ca. 5%:
 
-            1645cm^-1 v_2 bend
-            3490cm^-1 v_3 asymmetric stretch
+            1645cm^-1 	v_2 bend
+            3490cm^-1 	v_3 asymmetric stretch
 
-        Ein kleinerer Peak in fmakf.pdf, der in fakf.pdf nicht deutlich von anderen kleinen Peaks unterscheidbar ist:
+	    Diese Schwingungsmoden sind auch in h2o.mpg erkenntlich.
 
-            3650cm^-1 v_1 symmetric stretch für Isotopologues, was unwahrscheinlich scheint
+        Ein kleinerer Peak in fmakf_zoom.pdf, der in fakf.pdf nicht deutlich von anderen kleinen Peaks unterscheidbar ist:
+
+            3650cm^-1 	v_1 symmetric stretch für Isotopologues 
+
+	    Was ziemlich unwahrscheinlich scheint. 
+	    In der Tabelle "Main vibrations of liquid ordinary and heavy water" ist für H2O eine Frequenz mit Fußnote (d) angegeben. (d) erwähnt eine nicht dominante Frequenz von 3650cm^-1 aus dem Raman Spektrum.
 
         
 

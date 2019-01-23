@@ -1,1 +1,0 @@
-gfortran dfourier.f90 autocorrelation.f90 spektrum.f90 -o spektrum.out

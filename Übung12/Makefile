@@ -60,4 +60,4 @@ pdfs: $(TXTS)
 #	$(FC) $(FCFLAGS) -o $@ -c $<
 
 clean:
-	rm -f **/*.o *.o **/*.mod *.mod $(PROGRAM) $(ZIPFILE).zip
+	rm -f **/*.o *.o **/*.mod *.mod $(PROGRAM) $(ZIPFILE).zip *.mod0

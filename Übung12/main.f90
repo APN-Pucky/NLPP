@@ -66,7 +66,7 @@ program main
 
     subroutine test_akf()
         integer :: i,f,ff,fff,ffff,fffff
-        real,allocatable :: dat(:,:),datn(:,:)
+        real,allocatable :: dat(:,:)
         real,allocatable :: a(:),an(:)
         complex,allocatable :: r(:)
         f = io_openFile("data/traj-h2o.dat","old")
@@ -79,7 +79,6 @@ program main
         allocate(dat(7,n))
         allocate(a(n))
         n=n/3
-        allocate(datn(7,n))
         allocate(an(n))
         allocate(r(n+1))
         read(f,*) dat(:,:)
