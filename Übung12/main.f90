@@ -66,8 +66,8 @@ program main
 
     subroutine test_akf()
         integer :: i,f,ff,fff,ffff,fffff
-        real,allocatable :: dat(:,:)
-        real,allocatable :: a(:)
+        real,allocatable :: dat(:,:),datn(:,:)
+        real,allocatable :: a(:),an(:)
         complex,allocatable :: r(:)
         f = io_openFile("data/traj-h2o.dat","old")
         ff = io_openFile("data/akf.dat","replace")
@@ -78,22 +78,31 @@ program main
         dt = 20
         allocate(dat(7,n))
         allocate(a(n))
+        n=n/3
+        allocate(datn(7,n))
+        allocate(an(n))
         allocate(r(n+1))
         read(f,*) dat(:,:)
         a = akf(dat(5:7,:))
-        r = dft(cmplx(a,0.),0.)
+        !!! Norm a over steps N=3
+        do i=1,n    
+            an(i) = (a((i-1)*3+1)+a((i-1)*3+2)+a((i-1)*3+3))/3.
+        end do
+        !!!
+        r = dft(cmplx(an,0.),0.)
         write( ffff,*) ((i-1.)/N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),aimag(r(i)*dt/sqrt(2*pi)),nl,i=1,N+1)
-        write(ff,*) ((dt*i-dt),a(i),nl,i=1,n)
-        a = makf(dat(5:7,:))
-        r = dft(cmplx(a,0.),0.)
+        write(ff,*) ((dt*i-dt),an(i),nl,i=1,n)
+        call timecorrelate(dat(5:7,:),an,3)
+        r = dft(cmplx(an,0.),0.)
         write( fffff,*) ((i-1.)/N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),aimag(r(i)*dt/sqrt(2*pi)),nl,i=1,N+1)
         
-        write(fff,*) ((dt*i-dt),a(i),nl,i=1,n)
+        write(fff,*) ((dt*i-dt),an(i),nl,i=1,n)
 
         call io_closeAllFiles
 
         deallocate(dat)
         deallocate(a)
+        deallocate(an)
         deallocate(r)
     end subroutine
 end program

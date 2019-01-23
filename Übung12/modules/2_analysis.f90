@@ -31,6 +31,36 @@ module analysis
                     makf = (/((sum((/(sum(dat_y(:,k+1)*dat_y(:,k+i)),k=0,n-i)/))/(n-i)),i=1,n-1)/) !n-i=k_max
                     makf(n) = sum(dat_y(:,1)*dat_y(:,n))
                 end function
+                
+                
+                subroutine timecorrelate(V,A,l)
+                   implicit none
+                   real :: V(:,:), A(:), summe
+                   integer :: N, steps, d, i, j, t, t0, s(2),l
+                   
+                   s=shape(V)
+                   steps=s(2)/3
+                   d=s(1)
+                
+                   !Berechnung der Autokorrelationsfunktion für jeden Zeitschritt
+                   do t=1, steps
+                      summe=0.
+                      !Ändern des Zeitnullpunkts, +1, da unten -1 und alle steps erreicht werden sollen
+                      do t0=1, (steps-t+1)
+                         !Mittelung über alle Atome
+                         do i=1, l
+                            !Skalarprodukt
+                            do j=1, d
+                               !Verschobene Nullpunkte, -1 damit auch der Schritt ohne Verschiebung mitgenommen wird
+                               summe=summe+V(j,(t+t0-1-1)*l+i)*V(j,(t0-1)*l+(i))
+                            end do
+                         end do
+                      end do
+                      !Teilen durch Atomzahl und Anzahl der Zeitschritte, über die gemittelt wurde
+                      A(t)=1./(real(l)*real(steps-t+1))*summe
+                   end do
+                
+                end subroutine
 
                 real function nst_newton_fdf(f,df,x) ! Newton NST mit gegebener Ableitung!
                         real :: x
