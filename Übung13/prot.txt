@@ -1,0 +1,26 @@
+Alexander Neuwirth, Übung13, NLPP, Mon Jan 28 14:04:59 CET 2019, Jim Bachmann
+
+1)
+	a) 
+
+    Visualisierung: data/wasser.mpg
+
+    Die Datei traj.xyz wurde getrimmt, sodass nur 2000 steps enthalten sind. (ersten 21560 Zeilen)
+    Jedoch haben die Atome bei den verschiedenen mit "Step: 1" betitelten Steps verschiedene Positionen.
+
+    Geschwindigkeitautokorrelationsfunktion: images/akf.pdf
+    Schwingungsspektrum: images/spektrum.pdf
+
+    Die Peaks im H2O-Einzelmolekül Spektrum sind deutlich stärker ausgeprägt, weshalb dieses in Abblidung images/spektrum.pdf durch 100 dividiert wurde.
+    An den Peakstellen des H2O-Einzelmoleküls befindet sich immer auch ein Peak in dem Spektrum des flüssigen Wassers.
+    Des Weiteren hat das Wasser Spektrum deutlich mehr Peaks und ist chaotischer.
+    Grund hierfür ist die gegenseitige Wechselwirkung der Moleküle/Atome, welcher zur Folge hat das wesentlich mehr verscheidene Schwingungsmoden in den einzelnen Molekülen angeregt werden, aber auch zwei Moleküle können sich periodisch zueinander verhalten.
+    
+    Der Diffusionskoeffizient nach Green-Kubo D=1.665e-5 lässt sich von a.u. in m^2/s umrechnen
+    D=1.93e-9 m^2/s
+    und liegt somit in der selben Größenordnung wie der Literaturwert für Wasser.
+    
+    Der nach der Einstein-Formel beträgt (images/verschieb.pdf) 1.024e-5 in a.u..
+    Also D=1.19e-9 m^2/s
+    Hierbei stimmt wieder die Größenordnung, jedoch ist der nach Green-Kubo berechnete deutlich näher am Literaturwert, obwohl nicht von 0 bis unendlich sondern lediglich bis 2000 a.u. integriert wurde.
+
