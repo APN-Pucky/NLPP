@@ -15,7 +15,7 @@ program main
     deltat=20.
     o=n/3
     dr = 0.1
-    rmax = 9.8652/2/0.529177
+    rmax = 9.8652/2!/0.529177
     rrrho = real(o)/((2*rmax)**3)
 
 

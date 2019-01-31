@@ -55,7 +55,7 @@ program main
         r=dft(cmplx(v(4,:),0.),1.)
 
         f=io_openFile("data/co-f-real.dat","replace")
-        write( f,*) (i*1./N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),nl,i=1,N+1)
+        write( f,*) ((i-1.)*1./N/dt/(137*5.29e-9), abs(real(r(i)*dt/sqrt(2*pi))),nl,i=1,N+1)
         call io_closeFile(f)
 
         print *, v(4,:)

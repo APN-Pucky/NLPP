@@ -21,7 +21,7 @@ program main
     f(3) = io_openFile("data/spectrum.dat", "replace")
     f(4) = io_openFile("data/verschieb.dat", "replace")
 
-    steps = io_getFileLines(f(1))/(96+2)
+    steps = io_getFileLines(f(1))/(N+2)
     print * , steps
 
     !ALLOC
@@ -73,7 +73,7 @@ program main
     end do
 
     !diffusion
-    diff = sum(auto)/3*20
+    diff = sum(auto)/3*deltat
     print *, "d=", diff
     !diff = sum(tauto)/3*20
     !print *, "d_t=", diff
